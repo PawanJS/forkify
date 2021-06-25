@@ -135,3 +135,8 @@ const init = function () {
   addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 init();
+
+// removing preload class to make transition work
+window.addEventListener('load', () => {
+  document.body.classList.remove('preload');
+});

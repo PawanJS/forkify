@@ -36,6 +36,10 @@ html {
   }
 }
 
+.preload * {
+  transition: none !important;
+}
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 400;
