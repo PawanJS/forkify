@@ -1,33 +1,33 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let mode = "development";
-let target = "web";
+let mode = 'development';
+let target = 'web';
 
-if (process.env.NODE_ENV == "production") {
-  mode = "production";
-  target = "browserslist";
+if (process.env.NODE_ENV == 'production') {
+  mode = 'production';
+  target = 'browserslist';
 }
 
 module.exports = {
   mode: mode,
   target: target,
 
-  entry: "./src/js/controller.js",
+  entry: './src/js/controller.js',
 
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.[contenthash].js",
-    assetModuleFilename: "images/[hash][ext][query]",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.[contenthash].js',
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
 
   module: {
     rules: [
       {
         test: /\.(png|jpe?g|svg|webp|gif)$/i,
-        type: "asset",
+        type: 'asset',
       },
       {
         test: /\.(s[ac]|c)ss$/i,
@@ -35,23 +35,23 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "",
+              publicPath: '',
             },
           },
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
         ],
       },
       {
         test: /\.js$/i,
         exclude: /node_modules/,
-        use: [{ loader: "babel-loader" }],
+        use: [{ loader: 'babel-loader' }],
       },
 
       {
         test: /\.html$/i,
-        loader: "html-loader",
+        loader: 'html-loader',
       },
     ],
   },
@@ -65,9 +65,11 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'main.[contenthash].css',
+    }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: './src/index.html',
     }),
   ],
 
@@ -75,7 +77,7 @@ module.exports = {
   // devtool: 'source-map',
 
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     hot: true,
   },
 };
