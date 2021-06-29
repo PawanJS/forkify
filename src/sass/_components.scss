@@ -29,6 +29,10 @@
   font-size: 1.5rem;
   font-weight: 600;
 
+  @media only screen and (max-width: 50em) {
+    padding: 1.5rem 3rem;
+  }
+
   svg {
     height: 2.25rem;
     width: 2.25rem;

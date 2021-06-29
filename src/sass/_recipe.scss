@@ -1,5 +1,10 @@
 .recipe {
   background-color: $color-grey-light-1;
+  min-height: 70vh;
+
+  @media only screen and (max-width: 64em) {
+    grid-area: 3 / 1 / 4 / -1;
+  }
 
   ///////////
   // FIGURE
@@ -68,6 +73,7 @@
     display: flex;
     align-items: center;
     padding: 7.5rem 8rem 3.5rem 8rem;
+    flex-wrap: wrap;
   }
 
   &__info {
@@ -133,7 +139,7 @@
 
   &__ingredient-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 2.5rem 3rem;
     list-style: none;
   }

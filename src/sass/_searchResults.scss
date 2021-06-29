@@ -2,6 +2,13 @@
   padding: 3rem 0;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+
+  @media only screen and (max-width: 64em) {
+    grid-column: 1 / -1;
+    height: 25rem;
+    overflow-y: scroll;
+  }
 }
 
 .results {
